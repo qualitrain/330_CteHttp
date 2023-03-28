@@ -1,4 +1,4 @@
-package qtx.test;
+package mx.com.qtx.web;
 
 import java.io.BufferedReader;
 import java.io.IOException;
