@@ -26,23 +26,28 @@ public class TestHttp {
 		}
 		
 	}
+	
 	private static String getVerboRandom() {
 		int n = (int)(Math.random() * 10033);
 		return verbosHttp[n%verbosHttp.length];
 	}
+	
 	private static String getMediaTypeRandom() {
 		int n = (int)(Math.random() * 10000);
 		return mediaTypes[n%mediaTypes.length];
 	}
+	
 	private static String getRecursoRandom() {
 		int n = (int)(Math.random() * 77773);
 		return recursos[n%recursos.length];
 	}
+	
 	private static void generarPeticionHttp(URL url, String verboHttp) throws ProtocolException, IOException {
 		HttpURLConnection conexion = (HttpURLConnection) url.openConnection();
 		conexion.setRequestMethod(verboHttp);
 		conexion.setRequestProperty("User-Agent", "Programa de Alex");
 		conexion.setRequestProperty("Accept", getMediaTypeRandom());
+		conexion.setInstanceFollowRedirects(false);
 		conexion.connect();
 		/*
 		conexion.setRequestProperty("Accept-Charset", "ISO-8959-1");
@@ -54,6 +59,7 @@ public class TestHttp {
 		}
 		conexion.disconnect();
 	}
+	
 	private static void mostrarRespuesta(HttpURLConnection conexion) {
 		System.out.println("Respuesta - - - - - - - - - - - - - -");
 		if(conexion.getContentType() == null) {
